@@ -1,0 +1,18 @@
+/*
+
+// print all registers
+initial begin 
+for(RA1 = 0; RA1<16; RA1 = RA1 + 2)
+    begin
+        RA2 = RA1+1;
+        $display("t = %3d, RA1 = %d , RA2 = %d, RD1 = %d, RD2 = %d, cpu_out = %d", $time,RA1,RA2,RD1,RD2,cpu_out);
+    end 
+end 
+/*
+initial begin // Single pass behaviour which starts at time 0 ns
+
+$display("this works");
+$monitor("t = %3d, CLK = %b,  write_enable = %b, ALUResult = %b, WA = %b, RA1 = %b, RA2 = %b, RD1 = %b, RD2 = %b,  cpu_out = %b \n", $time, CLK, write_enable,ALUResult,WA,RA1,RA2,RD1,RD2,cpu_out);
+end // Print variable
+// values on screen
+en

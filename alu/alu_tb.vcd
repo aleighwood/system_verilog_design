@@ -1,0 +1,58 @@
+$date
+	Sun Feb 11 16:20:47 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module alu_tb $end
+$var wire 8 ! t_ALUResult [7:0] $end
+$var wire 1 " Zero $end
+$var reg 2 # t_ALUControl [1:0] $end
+$var reg 8 $ t_SrcA [7:0] $end
+$var reg 8 % t_SrcB [7:0] $end
+$scope module dut $end
+$var wire 2 & ALUControl [1:0] $end
+$var wire 8 ' SrcA [7:0] $end
+$var wire 8 ( SrcB [7:0] $end
+$var reg 8 ) ALUResult [7:0] $end
+$var reg 1 " Zero $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 )
+b10000001 (
+b1010 '
+b0 &
+b10000001 %
+b1010 $
+b0 #
+1"
+b0 !
+$end
+#20000
+0"
+b10001011 !
+b10001011 )
+b10001011 $
+b10001011 '
+b1 #
+b1 &
+#40000
+b1100 !
+b1100 )
+b10 #
+b10 &
+#60000
+b1010 !
+b1010 )
+b11 #
+b11 &
+#80000

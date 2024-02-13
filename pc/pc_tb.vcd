@@ -1,0 +1,200 @@
+$date
+	Mon Feb 12 17:13:26 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module pc_tb $end
+$var wire 8 ! PC [7:0] $end
+$var reg 1 " CLK $end
+$var reg 1 # PCSrc $end
+$var reg 8 $ immediate [7:0] $end
+$var reg 1 % reset $end
+$scope module dut $end
+$var wire 1 " CLK $end
+$var wire 1 # PCSrc $end
+$var wire 8 & immediate [7:0] $end
+$var wire 1 % reset $end
+$var reg 8 ' PC [7:0] $end
+$upscope $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 ( i [31:0] $end
+$upscope $end
+$scope begin $ivl_for_loop1 $end
+$var integer 32 ) i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 )
+b0 (
+b0 '
+bx &
+1%
+bx $
+x#
+1"
+b0 !
+$end
+#20000
+0%
+0"
+#40000
+b1 !
+b1 '
+0#
+1"
+#60000
+0"
+#80000
+b10 !
+b10 '
+1"
+b1 (
+#100000
+0"
+#120000
+b11 !
+b11 '
+1"
+b10 (
+#140000
+0"
+#160000
+b100 !
+b100 '
+1"
+b11 (
+#180000
+0"
+#200000
+b101 !
+b101 '
+1"
+b100 (
+#220000
+0"
+#240000
+b110 !
+b110 '
+1"
+b101 (
+#260000
+0"
+#280000
+b111 !
+b111 '
+1"
+b110 (
+#300000
+0"
+#320000
+b1000 !
+b1000 '
+1"
+b111 (
+#340000
+0"
+#360000
+b1001 !
+b1001 '
+1"
+b1000 (
+#380000
+0"
+#400000
+b1010 !
+b1010 '
+1"
+b1001 (
+#420000
+0"
+#440000
+b110010 !
+b110010 '
+b110010 $
+b110010 &
+1#
+1"
+b1010 (
+#460000
+0"
+#480000
+b110011 !
+b110011 '
+0#
+1"
+#500000
+0"
+#520000
+b110100 !
+b110100 '
+1"
+b1 )
+#540000
+0"
+#560000
+b110101 !
+b110101 '
+1"
+b10 )
+#580000
+0"
+#600000
+b110110 !
+b110110 '
+1"
+b11 )
+#620000
+0"
+#640000
+b110111 !
+b110111 '
+1"
+b100 )
+#660000
+0"
+#680000
+b111000 !
+b111000 '
+1"
+b101 )
+#700000
+0"
+#720000
+b111001 !
+b111001 '
+1"
+b110 )
+#740000
+0"
+#760000
+b111010 !
+b111010 '
+1"
+b111 )
+#780000
+0"
+#800000
+b111011 !
+b111011 '
+1"
+b1000 )
+#820000
+0"
+#840000
+b111100 !
+b111100 '
+1"
+b1001 )
+#860000
+0"
+#880000
+b1010 )

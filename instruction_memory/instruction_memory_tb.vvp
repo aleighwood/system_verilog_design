@@ -1,0 +1,84 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_000002664be16050 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000002664be161e0 .scope module, "instruction_memory_tb" "instruction_memory_tb" 3 4;
+ .timescale -9 -12;
+v000002664bdcb960_0 .var "address", 7 0;
+v000002664bdcba00_0 .net "data_out", 23 0, L_000002664bdcbbe0;  1 drivers
+S_000002664bde2870 .scope begin, "$ivl_for_loop0" "$ivl_for_loop0" 3 15, 3 15 0, S_000002664be161e0;
+ .timescale -9 -12;
+v000002664bde3040_0 .var/2s "i", 31 0;
+S_000002664bde2a00 .scope module, "dut" "instruction_memory" 3 7, 4 1 0, S_000002664be161e0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 8 "address";
+    .port_info 1 /OUTPUT 24 "data_out";
+L_000002664bdcbbe0 .functor BUFZ 24, L_000002664bdcbaa0, C4<000000000000000000000000>, C4<000000000000000000000000>, C4<000000000000000000000000>;
+v000002664bdcb3c0_0 .net *"_ivl_0", 23 0, L_000002664bdcbaa0;  1 drivers
+v000002664bdcaba0_0 .net *"_ivl_2", 9 0, L_000002664bdcbb40;  1 drivers
+L_000002664be5b858 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v000002664be16370_0 .net *"_ivl_5", 1 0, L_000002664be5b858;  1 drivers
+v000002664be16410_0 .net "address", 7 0, v000002664bdcb960_0;  1 drivers
+v000002664bde2b90 .array "data_ROM", 255 0, 23 0;
+v000002664bde2c30_0 .net "data_out", 23 0, L_000002664bdcbbe0;  alias, 1 drivers
+L_000002664bdcbaa0 .array/port v000002664bde2b90, L_000002664bdcbb40;
+L_000002664bdcbb40 .concat [ 8 2 0 0], v000002664bdcb960_0, L_000002664be5b858;
+    .scope S_000002664bde2a00;
+T_0 ;
+    %vpi_call/w 4 6 "$readmemh", "program.txt", v000002664bde2b90 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_000002664be161e0;
+T_1 ;
+    %vpi_call/w 3 11 "$dumpfile", "instruction_memory_tb.vcd" {0 0 0};
+    %vpi_call/w 3 12 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002664be161e0 {0 0 0};
+    %fork t_1, S_000002664bde2870;
+    %jmp t_0;
+    .scope S_000002664bde2870;
+t_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002664bde3040_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v000002664bde3040_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %pushi/vec4 0, 0, 32;
+    %load/vec4 v000002664bde3040_0;
+    %muli 1, 0, 32;
+    %add;
+    %pad/u 8;
+    %store/vec4 v000002664bdcb960_0, 0, 8;
+    %delay 20000, 0;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000002664bde3040_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000002664bde3040_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_000002664be161e0;
+t_0 %join;
+    %end;
+    .thread T_1;
+    .scope S_000002664be161e0;
+T_2 ;
+    %vpi_call/w 3 24 "$monitor", "t = %3d, address = %h, data_out = %h \012", $time, v000002664bdcb960_0, v000002664bdcba00_0 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "instruction_memory_tb.sv";
+    "./instruction_memory.sv";
