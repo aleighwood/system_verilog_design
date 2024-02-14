@@ -36,7 +36,7 @@ end
 //writes i++ to all registers, ALU performs add, s
 for(int i = 4'd1; i<16; i++)
     begin
-        CLK=0; write_enable = 1; WA = i;  RA1 = 4'd0;  immediate = i; ALUSrc = 1; ALUControl = 2'b10;
+        CLK=0; write_enable = 1; WA = i;  RA1 = 4'd0;  immediate = i*(8'd1); ALUSrc = 1; ALUControl = 2'b10;
         #20; 
         CLK= 1;  
         #20;
@@ -48,7 +48,7 @@ for(int i = 4'd1; i<16; i++)
 // read from registers, value RD1 register is added to 0. ALUResult is output from RD1
 for(int i = 4'd0; i<16; i++)
     begin 
-        write_enable = 0; RA1 = i; RA2 = RA1; ALUSrc =1; immediate = 8'b00000000; ALUControl = 2'b10;
+        write_enable = 0; RA1 = i; RA2 = RA1; ALUSrc =1; immediate = 8'd0; ALUControl = 2'b10;
         //$display("time = %3d, RA1 = RA2 = %d, ALUResult = %d", $time, RA1, ALUResult);
         #20;
     end

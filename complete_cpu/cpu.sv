@@ -4,7 +4,8 @@
 
 module cpu(input logic CLK,reset,
             output logic [7:0] ALUResult,
-            output logic [7:0] cpu_out);
+            output logic [7:0] cpu_out,
+            output logic [23:0] instr);
 
 // control unit ports
 logic [3:0] opcode;
@@ -17,7 +18,7 @@ cu control_unit(.opcode(opcode),.Branch(Branch),.ALUSrc(ALUSrc),.RegWrite(RegWri
 //instruction memory ports
 logic [7:0] immediate;
 logic PCSrc;
-logic [23:0] instr;
+//logic [23:0] instr;
 
 // intanitate inctruction memory pc
 instruction_memory_pc memory(.immediate(immediate),.PCSrc(PCSrc),.CLK(CLK),.reset(reset),.instr(instr));
@@ -25,8 +26,6 @@ instruction_memory_pc memory(.immediate(immediate),.PCSrc(PCSrc),.CLK(CLK),.rese
 // register file ports
 logic[3:0] RA1, RA2, WA;
 logic write_enable, Zero;
-
-
 
 // instantiate register file
 reg_file_alu register(.RA1(RA1),.RA2(RA2),.WA(WA),.write_enable(write_enable),.CLK(CLK),.ALUSrc(ALUSrc),.ALUControl(ALUControl),.immediate(immediate),.Zero(Zero),.cpu_out(cpu_out),.ALUResult(ALUResult));  

@@ -1,9 +1,3 @@
-//`incdir "C:/Users/aleig/OneDrive - University College London/Documents/EEEYear2/ELEC0010/system_verilog_design/register/"
-
-//`include "reg_file.sv"
-
-//reg_file r0 (.RD1_wire(RD1))
-
 module reg_file_alu (input logic [3:0] RA1, RA2, WA, 
                     input logic write_enable,CLK, ALUSrc, 
                     input logic [1:0] ALUControl,
@@ -13,14 +7,22 @@ module reg_file_alu (input logic [3:0] RA1, RA2, WA,
 
 // define registers -> width of data -> number of addresses
 reg [7:0] register [0:15];
-// define wires, outputs of register
-assign [7:0] RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0; // connect to module    
-assign [7:0] RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0; // connect to module
-// select SrcB
-assign [7:0] SrcB = (ALUSrc)? immediate : RD2; 
-// assign cpu_out
+// define read datas
+logic [7:0] RD1;  
+logic [7:0] RD2;
+// define SrcB
+logic [7:0] SrcB; 
+// define reg0
+//reg register[0] = 0;
 
+
+// assignments, these output 0 if register 0 is called
+
+assign RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0;
+assign RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0;
+assign SrcB = (ALUSrc)? immediate : RD2; 
 assign cpu_out = register[15];
+//assign register[0] = 0;
 
 
 // register is clock run
