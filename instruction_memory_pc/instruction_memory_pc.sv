@@ -4,9 +4,10 @@
 
 
 logic [23:0] data_ROM [0:255];
+logic [7:0] PC;
 initial $readmemh("program.txt", data_ROM);
 assign instr = data_ROM[PC];
-logic [7:0] PC;
+
 
 
 
@@ -15,7 +16,7 @@ always_ff @ (posedge CLK)
         if (reset) PC <= 8'd0;
         else PC <= (PCSrc)? immediate: PC + 8'd1;
     end
-// try with out file 
+
 
 
 

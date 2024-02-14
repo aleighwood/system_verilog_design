@@ -12,8 +12,8 @@ $dumpfile("cpu_tb.vcd"); // Dump variable changes in the vcd file
 $dumpvars(0, cpu_tb); // Specifies which variables to dump in the vcd file
 $display("this works");
 
-reset =1;  CLK = 0; #20; 
-CLK=1; #20;
+CLK =1; reset =1; #20; 
+
 reset = 0; #20;
 
 for(int i = 0; i<8;i++)

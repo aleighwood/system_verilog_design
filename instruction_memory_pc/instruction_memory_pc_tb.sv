@@ -12,15 +12,13 @@ $dumpfile("instruction_memory_pc_tb.vcd"); // Dump variable changes in the vcd f
 $dumpvars(0, instruction_memory_pc_tb); // Specifies which variables to dump in the vcd file
 $display("this works");
 
-reset =1; immediate = 0; PCSrc = 0; CLK = 0; #20; 
-CLK=1; #20;
-
+CLK =1; reset =1; immediate = 0; PCSrc = 0; #20; 
 
 reset = 0; #20;
 
 for(int i = 0; i<8;i++)
     begin
-       $display("instr = %h", instr);  
+      // $display("instr = %h", instr);  
         CLK = 0; #20;
         CLK = 1; #20;
 
@@ -28,10 +26,10 @@ for(int i = 0; i<8;i++)
 
 end
 
-/*
+
 initial begin
 $monitor("t = %3d,CLK = %b, reset = %b, PCSrc = %b, immediate = %b, instr = %h \n", $time, CLK, reset, PCSrc, immediate, instr);
 end // Print variable
 // values on screen
-*/
+
 endmodule

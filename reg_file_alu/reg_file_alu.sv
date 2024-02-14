@@ -14,10 +14,10 @@ module reg_file_alu (input logic [3:0] RA1, RA2, WA,
 // define registers -> width of data -> number of addresses
 reg [7:0] register [0:15];
 // define wires, outputs of register
-logic [7:0] RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0; // connect to module    
-logic [7:0] RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0; // connect to module
+assign [7:0] RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0; // connect to module    
+assign [7:0] RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0; // connect to module
 // select SrcB
-logic [7:0] SrcB = (ALUSrc)? immediate : RD2; 
+assign [7:0] SrcB = (ALUSrc)? immediate : RD2; 
 // assign cpu_out
 
 assign cpu_out = register[15];
@@ -35,8 +35,6 @@ always_ff @ (posedge CLK)
 // ALU is combinational 
 always_comb 
     begin 
-        
-        
         // select ALU action
         case(ALUControl)
         // bitwise AND
