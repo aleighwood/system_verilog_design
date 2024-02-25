@@ -3,8 +3,6 @@ module alu (input logic [7:0] SrcA,SrcB,
             output logic [7:0] ALUResult,
             output logic Zero);
 
-
-
 always_comb // combinational logic only 
 begin 
 
@@ -16,6 +14,7 @@ case(ALUControl) // switch case statement
 default: ALUResult = 8'bx;
 endcase
 
+// set 0 output
 if (ALUResult == 0) Zero = 1;
     else Zero = 0;
 

@@ -1,0 +1,7 @@
+t =   0, control = 0 t_SrcA = 00001010, t_SrcB = 10000001, y = 00000000 , zero = 1
+
+t =  20, control = 1 t_SrcA = 10001011, t_SrcB = 10000001, y = 10001011 , zero = 0
+
+t =  40, control = 2 t_SrcA = 10001011, t_SrcB = 10000001, y = 00001100 , zero = 0
+
+t =  60, control = 3 t_SrcA = 10001011, t_SrcB = 10000001, y = 00001010 , zero = 0

@@ -8,28 +8,25 @@ logic [23:0] instr;
 instruction_memory_pc dut(immediate,PCSrc,CLK,reset,instr); // Instantiate the module under test
 
 initial begin // Single pass behaviour which starts at time 0 ns
-$dumpfile("instruction_memory_pc_tb.vcd"); // Dump variable changes in the vcd file
-$dumpvars(0, instruction_memory_pc_tb); // Specifies which variables to dump in the vcd file
-$display("this works");
+$dumpfile("instruction_memory_pc_tb.vcd"); 
+$dumpvars(0, instruction_memory_pc_tb); 
 
+// reset
 CLK =1; reset =1; immediate = 0; PCSrc = 0; #20; 
 
-reset = 0; #20;
-
-for(int i = 0; i<8;i++)
+// print all instructions, by running clock
+//for(int i = 0; i<8;i++)
+while(instr != 23'h700007)
     begin
       // $display("instr = %h", instr);  
-        CLK = 0; #20;
+        reset = 0; CLK = 0; #20;
         CLK = 1; #20;
-
     end
-
 end
 
-
 initial begin
-$monitor("t = %3d,CLK = %b, reset = %b, PCSrc = %b, immediate = %b, instr = %h \n", $time, CLK, reset, PCSrc, immediate, instr);
-end // Print variable
-// values on screen
+
+$monitor("t = %3d,CLK = %b, reset = %b, PCSrc = %b, immediate = %b, instr = %h", $time, CLK, reset, PCSrc, immediate, instr);
+end 
 
 endmodule

@@ -8,10 +8,9 @@ logic [1:0] ALUControl;
 logic Branch,ALUSrc,RegWrite;
 cu dut(opcode,Branch,ALUSrc,RegWrite,ALUControl); 
 
-initial begin // Single pass behaviour which starts at time 0 ns
-$dumpfile("cu_tb.vcd"); // Dump variable changes in the vcd file
-$dumpvars(0, cu_tb); // Specifies which variables to dump in the vcd file
-
+initial begin 
+$dumpfile("cu_tb.vcd"); 
+$dumpvars(0, cu_tb); 
 
 // count up to 10
 for (int i = 0; i<8; i++)
@@ -20,9 +19,9 @@ for (int i = 0; i<8; i++)
     end
 end 
 
-initial begin // Single pass behaviour which starts at time 0 ns
+initial begin // display outputs of control unit
 
-$monitor("t = %3d, opcode = %d, RegWrite = %b, ALUSrc = %b, ALUControl = %b, Branch = %b \n", $time, opcode,RegWrite,ALUSrc,ALUControl,Branch);
+$monitor("t = %3d, opcode = %d, RegWrite = %b, ALUSrc = %b, ALUControl = %b, Branch = %b ", $time, opcode,RegWrite,ALUSrc,ALUControl,Branch);
 end // Print variable
 
 endmodule

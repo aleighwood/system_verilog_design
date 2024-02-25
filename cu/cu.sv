@@ -47,11 +47,8 @@ case(opcode) // switch case statement
         RegWrite = 0; ALUSrc = 0; ALUControl = 2'b11; Branch = 1; 
     end
 
-
 endcase
-
 end
-
 endmodule
 
 

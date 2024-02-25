@@ -12,27 +12,18 @@ logic [7:0] RD1;
 logic [7:0] RD2;
 // define SrcB
 logic [7:0] SrcB; 
-// define reg0
-//reg register[0] = 0;
 
-
-// assignments, these output 0 if register 0 is called
-
+// assignments, RDX output 0 if register 0 is called
 assign RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0;
 assign RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0;
 assign SrcB = (ALUSrc)? immediate : RD2; 
 assign cpu_out = register[15];
-//assign register[0] = 0;
 
-
-// register is clock run
+// Clock run logic writing to register at given address WA
 always_ff @ (posedge CLK)
-    begin
-        // write to register at address given by WA
-        if(write_enable && (WA>0)) register[WA] <= ALUResult;
-        // register 0 is always 0
-        //register[0] <= 0;
-    end
+begin
+if(write_enable && (WA>0))      register[WA] <= ALUResult;
+end
 
 // ALU is combinational 
 always_comb 
@@ -53,7 +44,6 @@ always_comb
         // Zero output
         if (ALUResult == 0) Zero = 1;
             else Zero = 0;
-
     end
 
 endmodule

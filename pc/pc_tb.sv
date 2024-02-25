@@ -11,6 +11,7 @@ initial begin // Single pass behaviour which starts at time 0 ns
 $dumpfile("pc_tb.vcd"); // Dump variable changes in the vcd file
 $dumpvars(0, pc_tb); // Specifies which variables to dump in the vcd file
 
+// reset
 CLK =1; reset = 1; #20; 
 CLK =0; reset = 0; #20; 
 
@@ -21,8 +22,7 @@ for (int i = 0; i<10; i++)
     CLK = 0; #20; 
     end
 
-// introduce immediate 
-
+// introduce immediate, setting PC to 50
 CLK =1 ;PCSrc =1; immediate = 8'd50; #20;
 
 // count another 10, starting at 50
@@ -32,12 +32,11 @@ for (int i = 0; i<10; i++)
     CLK =1; PCSrc =0; #20;
     CLK = 0; #20; 
     end
-
 end 
 
-initial begin // Single pass behaviour which starts at time 0 ns
+initial begin
 
-$monitor("t = %3d, CLK = %b, reset = %b, PCSrc = %b, immediate = %d, PC = %d \n", $time,CLK,reset, PCSrc,immediate,PC);
-end // Print variable
-// values on screen
+$monitor("t = %3d, CLK = %b, reset = %b, PCSrc = %b, immediate = %d, PC = %d", $time,CLK,reset, PCSrc,immediate,PC);
+end 
+
 endmodule

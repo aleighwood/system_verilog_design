@@ -4,32 +4,28 @@
 module cpu_tb;
 logic CLK, reset;
 logic [7:0] ALUResult,cpu_out;
-logic [23:0] instr;
 
-cpu dut(CLK,reset,ALUResult,cpu_out,instr); // Instantiate the module under test
 
-initial begin // Single pass behaviour which starts at time 0 ns
-$dumpfile("cpu_tb.vcd"); // Dump variable changes in the vcd file
-$dumpvars(0, cpu_tb); // Specifies which variables to dump in the vcd file
-$display("this works");
+cpu dut(CLK,reset,ALUResult,cpu_out); // Instantiate the module under test
 
-CLK =1; reset =1; #20; 
+initial begin 
+$dumpfile("cpu_tb.vcd"); 
+$dumpvars(0, cpu_tb); 
 
-reset = 0; #20;
+//reset
+CLK =1;
+reset =1; #20; reset = 0; #20;
 
-for(int i = 0; i< 100;i++)
+//run clock until cpu_out ==5
+for(int i = 0; i< 22;i++)
     begin 
         CLK = 0; #20;
         CLK = 1; #20;
-
     end
-
 end
 
-
 initial begin
-$monitor("t = %3d,CLK = %b, reset = %b, instr = %h,ALUResult = %d, cpu_out = %d \n", $time, CLK, reset, instr, ALUResult,cpu_out);
-end // Print variable
-// values on screen
+$monitor("t = %3d,CLK = %b, reset = %b, ALUResult = %d, cpu_out = %d", $time, CLK, reset, ALUResult,cpu_out);
+end 
 
 endmodule

@@ -1,5 +1,5 @@
 $date
-	Sun Feb 11 16:20:47 2024
+	Sat Feb 17 15:40:41 2024
 $end
 $version
 	Icarus Verilog
@@ -13,11 +13,12 @@ $var wire 1 " Zero $end
 $var reg 2 # t_ALUControl [1:0] $end
 $var reg 8 $ t_SrcA [7:0] $end
 $var reg 8 % t_SrcB [7:0] $end
+$var integer 32 & file [31:0] $end
 $scope module dut $end
-$var wire 2 & ALUControl [1:0] $end
-$var wire 8 ' SrcA [7:0] $end
-$var wire 8 ( SrcB [7:0] $end
-$var reg 8 ) ALUResult [7:0] $end
+$var wire 2 ' ALUControl [1:0] $end
+$var wire 8 ( SrcA [7:0] $end
+$var wire 8 ) SrcB [7:0] $end
+$var reg 8 * ALUResult [7:0] $end
 $var reg 1 " Zero $end
 $upscope $end
 $upscope $end
@@ -27,32 +28,42 @@ $dumpall
 $end
 #0
 $dumpvars
-b0 )
-b10000001 (
-b1010 '
-b0 &
+b1 *
+b10000001 )
+b11 (
+b0 '
+bx &
 b10000001 %
-b1010 $
+b11 $
 b0 #
-1"
-b0 !
+0"
+b1 !
 $end
 #20000
-0"
-b10001011 !
-b10001011 )
-b10001011 $
-b10001011 '
+b11111111 !
+b11111111 *
+b1010101 %
+b1010101 )
+b10101010 $
+b10101010 (
 b1 #
-b1 &
+b1 '
 #40000
-b1100 !
-b1100 )
+b1101110 !
+b1101110 *
+b1100100 %
+b1100100 )
+b1010 $
+b1010 (
 b10 #
-b10 &
+b10 '
 #60000
-b1010 !
-b1010 )
+b11000 !
+b11000 *
+b1001100 %
+b1001100 )
+b1100100 $
+b1100100 (
 b11 #
-b11 &
+b11 '
 #80000

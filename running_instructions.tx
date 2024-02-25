@@ -1,6 +1,19 @@
-// instruction_memory: 
-    iverilog -g 2012 -o instruction_memory_tb.vvp instruction_memory_tb.sv
+//alu: 
 
+    iverilog -g 2012 -o alu_tb.vvp alu_tb.sv  
+
+    vvp alu_tb.vvp
+
+// reg file:
+
+        iverilog -g 2012 -o reg_file_tb.vvp reg_file_tb.sv
+
+        vvp reg_file_tb.vvp
+
+
+// instruction_memory: 
+    
+    iverilog -g 2012 -o instruction_memory_tb.vvp instruction_memory_tb.sv
 
     vvp instruction_memory_tb.vvp
 
@@ -21,9 +34,13 @@
 
         vvp instruction_memory_pc_tb.vvp
 
+// cu: 
+    iverilog -g 2012 -o cu_tb.vvp cu_tb.sv
+    
+    vvp cu_tb.vvp
+
+
 
 // cpu 
     iverilog -g 2012 -o cpu_tb.vvp cpu_tb.sv
-
-
     vvp cpu_tb.vvp

@@ -7,21 +7,15 @@ module reg_file (input logic [3:0] RA1, RA2, WA,
 // define registers -> width of data -> number of addresses
 reg [7:0] register [0:15];
 
-//assign register[0] = 0; // set x0 to 0 
-
-// continous assignment 
-assign RD1 = register[RA1];
-assign RD2 = register[RA2];
+// continous assignment of outputs
 assign cpu_out = register[15];
-//assign register[0] = 0;
+assign RD1 = (RA1 != 4'd0)? register[RA1]: 8'd0;
+assign RD2 = (RA2 != 4'd0)? register[RA2]: 8'd0;
 
+// Clock run logic writing to register at given address WA
 always_ff @ (posedge CLK)
 begin
-
-// write to register at address given by WA
-if(write_enable && (WA>0)) register[WA] <= ALUResult;
-register[0] <= 0;
-
+if(write_enable && (WA>0))      register[WA] <= ALUResult;
 end
 
 endmodule
